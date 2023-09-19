@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="with=device-width,initial-scale=1.0">
+	<title> Vector Tution Point</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<body>
+	<section class="sub-header">
+		<nav>
+			<a href="index.html"><img src="images/logo.png"></a>
+			<div class="nav-links" id="navLinks">
+				<i class="fa fa-times" onclick="hideMenu()"></i>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">ABOUT</a></li>
+					<li><a href="course.html">COURSE</a></li>
+					<li><a href="blog.html">BLOG</a></li>
+					<li><a href="result.html">RESULT</a></li>
+					<li><a href="contact.html">CONTACT</a></li>
+				</ul>
+			</div>
+			<i class="fa fa-bars" onclick="showMenu()"></i>
+		</nav>
+	<h1>Our Courses</h1>
+	</section>
+	
+<!---------------------------- Courses ------------------------------->
+
+<section class = "course">
+	<h1>Courses We offer</h1>
+	<p>Education is not only covering the prescribed syllabus we offer a lot more.</p>
+	
+	<div class="row">
+		<div class="course-col">
+			<h3>Secondary</h3>
+			<p>The Secondary course covers all the subjects included in the official syllabus of the exam, viz, 
+			English,Science, Maths, Social Science. The course is specifically designed by experts around the country 
+			to make it student-friendly, and extremely easy to understand. It aims at providing conceptual learning 
+			to students and parts them from rote learning.</p>
+		</div>
+		<div class="course-col">
+			<h3>Senior Secondary</h3>
+			<p>The Senior Secondary course specific subjects included in the official syllabus of the exam
+			Gen. English, Gen. Hindi, Physics, chemistry, mathematics, and Computer(online). 
+			The course is specifically designed by experts around the country to make it student-friendly,
+			and extremely easy to understand. It aims at providing conceptual learning to students and parts them from 
+			rote learning.</p>
+		</div>
+		<div class="course-col">
+			<h3>competition classes</h3>
+			<p>offering educational services to the students preparing for the Competitive exams like BANK, RAILWAY,
+			Defence & other competitive exams since 2018. The institute imparts comprehensive training-cum-guidance program 
+			which cover all the stages of Competitive exams</p>
+		</div>
+	</div>
+</section>
+	
+<!-------------------------------- Facilities ------------------->
+
+<section class="facilities">
+	<h1>Our Faculty</h1>
+	<p>MEET OUR PROFESSIONAL INSTRUCTORS.</p>
+	
+	<div class="row">
+		<div class="facilities-col">
+			<img src="images/neeraj.jpg">
+			<h3>Neeraj Rai</h3>
+			<p>The director and Chemistry teacher of the institute.</p>
+		</div>
+		<div class="facilities-col">
+			<img src="images/dheeraj.jpg">
+			<h3>Dheeraj Rai</h3>
+			<p>Master in Physics and Maths</p>
+		</div>
+		<div class="facilities-col">
+			<img src="images/purvi.jpg">
+			<h3>Purvi</h3>
+			<p>The C.E.O and owner of the firm.</p>
+		</div>
+	
+	</div>
+	
+	
+	
+</section>
+
+
+<!--------------------------- Footer -------------------------->
+
+<section class="footer">
+	<h4>About Us</h4>
+	<p>The word "Vector" refers to direct to a desired point founder of Vector Institute,
+	has the flair for teaching <br> and passion to mould a child in the professional field.</p>
+	<div class="icons">
+		<i class="fa fa-facebook"></i>
+		<i class="fa fa-twitter"></i>
+		<i class="fa fa-instagram"></i>
+		<i class="fa fa-linkedin"></i>
+	</div>
+	<p>Made with <i class="fa fa-heart-o"></i> by Prateek Rai </p>
+</section>
+
+
+
+
+	
+	
+	
+	
+<!-------JavaScript for Toggle Menu (phone) --------------->
+<script>
+	var navLinks = document.getElementById("navLinks");
+	
+	function showMenu(){
+		navLinks.style.right = "0";
+	}
+	
+	function hideMenu(){
+		navLinks.style.right = "-200px";
+	}
+	
+</script>	
+	
+</body>
+</html>
