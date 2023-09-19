@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Local Image Search</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Local Image Search</h1>
+	<form method="GET" action="">
+		<label for="search">Search:</label>
+		<input type="text" name="search" id="search" placeholder="Enter image filename">
+		<input type="button" name="submit" value="Ok" onclick="searchImage()">
+	</form>
+
+	<div id="image-container"></div>
+
+	<script>
+	function searchImage() {
+		var search_term = document.getElementById("search").value;
+		var dir = "images/"; // your local directory path
+		var found = false; // initialize a variable to track if the image file was found
+
+		// check if the image file exists and display it if it does
+		
+			var filename = dir + search_term  +".jpeg";
+			console.log("searching for image: " + filename);
+			var img = "<img src='" + filename + "' height='1000' width='1000'>";
+			if (fileExists(filename)) {
+				console.log("inside if");
+				document.getElementById("image-container").innerHTML = img;
+			}
+			else{
+			console.log("inside else");
+			var filename = dir + "image_not_found.jpeg";
+			var img = "<img src='" + filename + "' height='1000' width='1000'>";
+			document.getElementById("image-container").innerHTML = img;
+			}
+		
+	}
+
+	function fileExists(url) {
+		var http = new XMLHttpRequest();
+		http.open('HEAD', url, false);
+		//http.send();//
+		//return http.status != 404;//
+		http.onreadystatechange = function() {
+        if (this.readyState == this.DONE) {
+            callback(this.status != 404);
+        }
+    };
+    http.send();
+	}
+	</script>
+</body>
+</html>
+

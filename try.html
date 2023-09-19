@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Fancy Image Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .search-container {
+            margin: 20px auto;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        a.download-link {
+            display: block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        a.download-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+	<section>
+    <h1>Result</h1>
+    <div class="search-container">
+        <label for="Name">Enter Name:</label>
+        <input type="text" id="Name" placeholder="Name">
+		
+		<label for="FatherName">Enter Fathers Name: </label>
+		<input type="text" id="FatherName" placeholder="Father Name">
+	
+        <button onclick="searchImage()">Search</button>
+    </div>
+    <div class="image-container" id="imageContainer"></div>
+
+    <script>
+        function searchImage() {
+    const Name = document.getElementById('Name').value;
+    const FatherName = document.getElementById('FatherName').value;
+    const imageName = Name + '_' + FatherName;
+
+    const imageContainer = document.getElementById('imageContainer');
+    console.log("searching for image: " + imageName);
+
+    // Search for image with different extensions
+    const extensions = ['jpeg', 'jpg', 'png','JPG','PNG','JPEG'];
+    let imageURL = null;
+    for (const extension of extensions) {
+        const img = new Image();
+        const url = `images/${imageName}.${extension}?${new Date().getTime()}`;
+        img.src = url;
+        img.onload = function() {
+            // Image exists with this extension, use this URL
+            imageURL = url;
+            displayImage(imageURL, imageName, imageContainer);
+        };
+        img.onerror = function() {
+            // Image does not exist with this extension, try the next one
+            if (extension === extensions[extensions.length - 1]) {
+                // Image does not exist with any extension, display error message
+                displayErrorMessage(imageContainer);
+            }
+        };
+    }
+}
+
+function displayImage(imageURL, imageName, imageContainer) {
+    const imageExtension = imageURL.split('.').pop();
+    const imageHTML = `
+        <img src="${imageURL}" alt="${imageName}">
+        <a href="${imageURL}" download="${imageName}.${imageExtension}" class="download-link"><i class="fas fa-download"></i> Download Certificate </a>
+    `;
+    imageContainer.innerHTML = imageHTML;
+}
+
+function displayErrorMessage(imageContainer) {
+    const imageHTML = `
+        <img src="images/image_not_found.jpeg" alt="image_not_found.jpeg">
+    `;
+    imageContainer.innerHTML = imageHTML;
+}
+
+    </script>
+	</section>
+</body>
+</html>
